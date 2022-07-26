@@ -1,10 +1,10 @@
-FROM debian:buster
+FROM alpine:3.13
 
-RUN apt-get -y update && apt-get -y upgrade && \
-	apt-get -y install wordpress php-fpm wget 
+RUN apk update && apk upgrade && \
+	apk add bash mariadb-client
 
-COPY ./conf/script.sh .
+COPY tools/init.sh /init.sh
 
-RUN chmod 777 ./script.sh
+RUN chmod +x /init.sh
 
-CMD ["./script.sh"]
+CMD ["tail", "-f"]

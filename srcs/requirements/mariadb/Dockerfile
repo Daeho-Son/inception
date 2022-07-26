@@ -1,9 +1,14 @@
 # FROM mariadb
-FROM debian:buster
+FROM alpine:3.13
 
-RUN apt-get -y update && apt-get -y upgrade && \
-	apt-get -y install mariadb-server
+RUN apk update && apk upgrade && \
+	apk add bash mariadb mariadb-client && \
+	mkdir -p /run/mysqld /var/lib/mysql && \
+    mariadb-install-db --datadir=/var/lib/mysql --auth-root-authentication-method=normal && \
+    chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
-COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/
+COPY tools/init.sh /init.sh
 
-CMD ["bash"]
+RUN chmod +x /init.sh
+
+CMD ["/bin/bash", "/init.sh"]
