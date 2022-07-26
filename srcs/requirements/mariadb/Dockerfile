@@ -1,3 +1,4 @@
+# FROM mariadb
 FROM debian:buster
 
 RUN apt-get -y update && apt-get -y upgrade && \
@@ -5,4 +6,4 @@ RUN apt-get -y update && apt-get -y upgrade && \
 
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 
-COPY ./co
+CMD ["bash"]

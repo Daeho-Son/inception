@@ -12,4 +12,6 @@ echo ""
 echo -n "Container ID: "
 read CID
 
+make ps | grep $CID | awk '{print $1}'
+
 docker exec -it $CID /bin/sh
