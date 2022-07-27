@@ -6,5 +6,3 @@ sleep 5;
 mkdir -p /var/run/nginx
 
 nginx -g 'daemon off;'
-
-tail -f

@@ -13,10 +13,9 @@ exec:
 clean:
 	@docker-compose -f ./srcs/docker-compose.yml down --rmi all
 
-fclean:
+fclean: clean
 	@bash ./scripts/clear.sh
 
 re: fclean all
 
-.PHONY: all logs ps clean fclean re
-
+.PHONY: all logs ps exec clean fclean re

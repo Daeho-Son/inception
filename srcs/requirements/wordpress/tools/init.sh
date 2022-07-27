@@ -28,5 +28,3 @@ wp core install --title=$WP_TITLE --url=$WP_URL --admin_user=$WP_ADMIN_USER --ad
 wp user create $WP_USER_LOGIN $WP_USER_EMAIL --user_pass=$WP_USER_PASS --path=/var/www/wordpress
 
 php-fpm7 --nodaemonize
-
-# tail -f

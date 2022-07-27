@@ -44,4 +44,16 @@ networks:
 
 volumes:
   volume_for_mariadb:
+    driver: local
+    driver_opts:
+      device: /home/dason/data/mariadb
+      o: bind
+      type: volume
+    name: volume_for_mariadb 
   volume_for_wordpress:
+    driver: local
+    driver_opts:
+      device: /home/dason/data/wordpress
+      o: bind
+      type: volume
+    name: volume_for_wordpress 

@@ -18,3 +18,5 @@ echo "" >> logs.txt
 
 echo '===== Wordpress =====' >> logs.txt
 echo `docker logs $WORDPRESS_PID` >> logs.txt
+
+docker-compose -f ./srcs/docker-compose.yml logs -f
