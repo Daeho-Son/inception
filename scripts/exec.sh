@@ -10,8 +10,8 @@ trap "trap_ctrlc" 2
 make ps
 echo ""
 echo -n "Container ID: "
-read CID
+read INPUT
 
-make ps | grep $CID | awk '{print $1}'
+make ps | grep $INPUT | awk '{print $1}'
 
-docker exec -it $CID /bin/sh
+docker exec -it $INPUT /bin/sh

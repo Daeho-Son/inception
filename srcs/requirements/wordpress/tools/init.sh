@@ -24,3 +24,5 @@ wp core download --version=5.8.1 --path=/var/www/wordpress
 cp /wp-config.php /var/www/wordpress/wp-config.php
 
 php-fpm7 --nodaemonize
+
+# tail -f
