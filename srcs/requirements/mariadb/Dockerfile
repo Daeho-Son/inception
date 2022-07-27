@@ -7,6 +7,7 @@ RUN apk update && apk upgrade && \
     mariadb-install-db --datadir=/var/lib/mysql --auth-root-authentication-method=normal && \
     chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
+#
 COPY tools/init.sh /init.sh
 
 RUN chmod +x /init.sh

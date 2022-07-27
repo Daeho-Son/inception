@@ -12,6 +12,6 @@ echo ""
 echo -n "Container ID or IMAGE: "
 read INPUT
 
-make ps | grep $INPUT | awk '{print $1}'
+CID=`make ps | grep $INPUT | awk '{print $1}'`
 
-docker exec -it $INPUT /bin/sh
+docker exec -it $CID /bin/sh

@@ -20,10 +20,13 @@ if [ $? -ne 0 ]; then
 	# Add user for wordpress
 	mysql -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DB;"
 
-	# %: allow access from outside network
+	# CREATE USER 'username'@'host' IDENTIFIED WITH authentication_plugin BY 'password';
+	mysql -e "CREATE USER '$MARIADB_ROOT_USER'@'%' IDENTIFIED BY '$MARIADB_ROOT_PWD';"
 	mysql -e "CREATE USER '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PWD';"
 
 	# Grant Permissions
+	# GRANT `PRIVILEGE` ON `database`.`table` TO 'username'@'host';
+	mysql -e "GRANT ALL PRIVILEGES ON *.* TO '$MARIADB_ROOT_USER'@'%' WITH GRANT OPTION;"
 	mysql -e "GRANT ALL PRIVILEGES ON $MARIADB_DB.* TO '$MARIADB_USER'@'%' WITH GRANT OPTION;"
 
 	mysql -e "FLUSH PRIVILEGES;"
