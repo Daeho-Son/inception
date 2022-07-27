@@ -18,15 +18,15 @@ if [ $? -ne 0 ]; then
   	fi
 
 	# Add user for wordpress
-	mysql -e "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE";
+	mysql -e "CREATE DATABASE IF NOT EXISTS $MARIADB_DB;"
 
 	# %: allow access from outside network
-	mysql -e "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'";
+	mysql -e "CREATE USER '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PWD';"
 
 	# Grant Permissions
-	mysql -e "GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%' WITH GRANT OPTION";
+	mysql -e "GRANT ALL PRIVILEGES ON $MARIADB_DB.* TO '$MARIADB_USER'@'%' WITH GRANT OPTION;"
 
-	mysql -e "FLUSH PRIVILEGES";
+	mysql -e "FLUSH PRIVILEGES;"
 
 	pkill mariadb
 

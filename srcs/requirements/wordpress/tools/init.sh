@@ -3,10 +3,10 @@
 # configure php-fpm
 sed -i "s/.*listen = 127.0.0.1.*/listen = 9000/g" /etc/php7/php-fpm.d/www.conf
 
-echo "env[MYSQL_HOST] = \$MYSQL_HOST" >> /etc/php7/php-fpm.d/www.conf
-echo "env[MYSQL_USER] = \$MYSQL_USER" >> /etc/php7/php-fpm.d/www.conf
-echo "env[MYSQL_PASSWORD] = \$MYSQL_PASSWORD" >> /etc/php7/php-fpm.d/www.conf
-echo "env[MYSQL_DATABASE] = \$MYSQL_DATABASE" >> /etc/php7/php-fpm.d/www.conf
+echo "env[MARIADB_DB] = \$MARIADB_DB" >> /etc/php7/php-fpm.d/www.conf
+echo "env[MARIADB_USER] = \$MARIADB_USER" >> /etc/php7/php-fpm.d/www.conf
+echo "env[MARIADB_PWD] = \$MARIADB_PWD" >> /etc/php7/php-fpm.d/www.conf
+echo "env[MARIADB_HOST] = \$MARIADB_HOST" >> /etc/php7/php-fpm.d/www.conf
 
 # setup wp-cli
 chmod +x wp-cli.phar
@@ -14,7 +14,7 @@ mv wp-cli.phar /usr/local/bin/wp
 
 sleep 5;
 # Waiting
-if ! mysqladmin -h $MYSQL_HOST -u $MYSQL_USER --password=$MYSQL_PASSWORD --wait=60 ping > /dev/null; then
+if ! mysqladmin -h $MARIADB_HOST -u $MARIADB_USER --password=$MARIADB_PWD --wait=60 ping > /dev/null; then
 	printf "MariaDB Daemon Unreachable\n"
 	exit 1
 fi

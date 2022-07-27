@@ -7,7 +7,7 @@ function trap_ctrlc ()
 }
 trap "trap_ctrlc" 2
 
-make ps
+make ps | awk '{ print ($1, $2) }'
 echo ""
 echo -n "Container ID: "
 read INPUT
