@@ -6,7 +6,8 @@ RUN apk update && apk upgrade && \
 	-subj "/C=KR/ST=Seoul/L=Seoul/O=42Seoul/OU=42/CN=localhost" \
 	-keyout /etc/ssl/private/localhost_p.key \
 	-out /etc/ssl/certs/localhost.crt && \
-	chmod 777 /etc/ssl/certs/localhost.crt /etc/ssl/private/localhost_p.key
+	chmod 777 /etc/ssl/certs/localhost.crt /etc/ssl/private/localhost_p.key && \
+	rm -rf /etc/nginx/conf.d/default.conf
 
 COPY conf/default.conf /default.conf 
 COPY tools/init.sh /init.sh
