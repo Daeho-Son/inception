@@ -4,7 +4,7 @@ all:
 logs:
 	@bash ./scripts/logs.sh
 	@cat logs.txt
-	@rm log.txt
+	@rm logs.txt
 
 ps :
 	@docker ps -a
